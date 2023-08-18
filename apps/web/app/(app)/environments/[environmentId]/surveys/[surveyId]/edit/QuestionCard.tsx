@@ -16,6 +16,7 @@ import {
   PresentationChartBarIcon,
   QueueListIcon,
   StarIcon,
+  CalendarIcon
 } from "@heroicons/react/24/solid";
 import * as Collapsible from "@radix-ui/react-collapsible";
 import { useState } from "react";
@@ -28,6 +29,7 @@ import NPSQuestionForm from "./NPSQuestionForm";
 import OpenQuestionForm from "./OpenQuestionForm";
 import QuestionDropdown from "./QuestionMenu";
 import RatingQuestionForm from "./RatingQuestionForm";
+import BookWithCalcomForm from "./BookWithCalcomForm"
 
 interface QuestionCardProps {
   localSurvey: Survey;
@@ -106,7 +108,9 @@ export default function QuestionCard({
                       <StarIcon />
                     ) : question.type === "consent" ? (
                       <CheckIcon />
-                    ) : null}
+                    ): question.type === QuestionType.CalCOM ? (
+                      <CalendarIcon />
+                    )  : null}
                   </div>
                   <div>
                     <p className="text-sm font-semibold">
@@ -193,6 +197,15 @@ export default function QuestionCard({
                   questionIdx={questionIdx}
                   updateQuestion={updateQuestion}
                   isInValid={isInValid}
+                />
+              ) : question.type === QuestionType.CalCOM ? (
+                <BookWithCalcomForm
+                localSurvey={localSurvey}
+                question={question}
+                questionIdx={questionIdx}
+                updateQuestion={updateQuestion}
+                lastQuestion={lastQuestion}
+                isInValid={isInValid}
                 />
               ) : null}
               <div className="mt-4">

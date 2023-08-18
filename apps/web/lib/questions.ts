@@ -6,6 +6,7 @@ import {
   QueueListIcon,
   StarIcon,
   CheckIcon,
+  CalendarIcon
 } from "@heroicons/react/24/solid";
 import { createId } from "@paralleldrive/cuid2";
 import { replaceQuestionPresetPlaceholders } from "./templates";
@@ -100,6 +101,18 @@ export const questionTypes: QuestionType[] = [
     },
   },
   {
+    id: QuestionId.CalCOM,
+    label: "Book with cal.com",
+    description: "Booking at cal.com",
+    icon: CalendarIcon,
+    preset: {
+      headline: "Booking with cal.com",
+      subheader: "Cal.com username",
+      placeholder: "Enter your cal.com username",
+      username: "rick"
+    },
+  },
+  {
     id: "consent",
     label: "Consent",
     description: "Ask your users to accept something",
@@ -109,7 +122,7 @@ export const questionTypes: QuestionType[] = [
       label: "I agree to the terms and conditions",
       dismissButtonLabel: "Skip",
     },
-  },
+  }
 ];
 
 export const universalQuestionPresets = {

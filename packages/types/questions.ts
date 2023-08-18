@@ -11,6 +11,7 @@ export enum QuestionType {
   CTA = "cta",
   Rating = "rating",
   Consent = "consent",
+  CalCOM = "bookWithCalcom"
 }
 
 export type Question =
@@ -20,7 +21,8 @@ export type Question =
   | NPSQuestion
   | CTAQuestion
   | RatingQuestion
-  | ConsentQuestion;
+  | ConsentQuestion
+  | BookWithCalcomQuestion;
 
 export interface IQuestion<T extends Logic> {
   id: string;
@@ -78,6 +80,12 @@ export interface ConsentQuestion extends IQuestion<CTALogic> {
   html?: string;
   label: string;
   dismissButtonLabel?: string;
+}
+
+export interface BookWithCalcomQuestion extends IQuestion<BookWithCalcomLogic> {
+  type: QuestionType.CalCOM;
+  placeholder: string;
+  username: string;
 }
 
 export type LogicCondition =
@@ -148,6 +156,11 @@ export interface ConsentLogic extends LogicBase {
   value: undefined;
 }
 
+export interface BookWithCalcomLogic extends LogicBase {
+  condition: "submitted" | "skipped" | undefined;
+  value: undefined;
+}
+
 export type Logic =
   | OpenTextLogic
   | MultipleChoiceSingleLogic
@@ -155,4 +168,5 @@ export type Logic =
   | NPSLogic
   | CTALogic
   | RatingLogic
-  | ConsentLogic;
+  | ConsentLogic
+  | BookWithCalcomLogic;

@@ -6,6 +6,7 @@ import NPSQuestion from "./NPSQuestion";
 import CTAQuestion from "./CTAQuestion";
 import RatingQuestion from "./RatingQuestion";
 import ConsentQuestion from "./ConsentQuestion";
+import BookingWithCalcomQuestion from "./BookWithCalcomQuestion"
 import { TSurveyQuestion } from "@formbricks/types/v1/surveys";
 
 interface QuestionConditionalProps {
@@ -100,5 +101,15 @@ export default function QuestionConditional({
       goToNextQuestion={goToNextQuestion}
       goToPreviousQuestion={goToPreviousQuestion}
     />
-  ) : null;
+  ): question.type === QuestionType.CalCOM ? (
+    <BookingWithCalcomQuestion
+      question={question}
+      onSubmit={onSubmit}
+      lastQuestion={lastQuestion}
+      brandColor={brandColor}
+      storedResponseValue={storedResponseValue}
+      goToNextQuestion={goToNextQuestion}
+      goToPreviousQuestion={goToPreviousQuestion}
+    />
+  )  : null;
 }

@@ -136,6 +136,15 @@ export const ZSurveyOpenTextQuestion = ZSurveyQuestionBase.extend({
 
 export type TSurveyOpenTextQuestion = z.infer<typeof ZSurveyOpenTextQuestion>;
 
+export const ZSurveyBookWithCalcomQuestion = ZSurveyQuestionBase.extend({
+  type: z.literal(QuestionType.CalCOM),
+  placeholder: z.string().optional(),
+  username: z.string(),
+  logic: z.array(ZSurveyOpenTextLogic).optional(),
+});
+
+export type TSurveyBookWithCalcomQuestion = z.infer<typeof ZSurveyBookWithCalcomQuestion>;
+
 export const ZSurveyConsentQuestion = ZSurveyQuestionBase.extend({
   type: z.literal(QuestionType.Consent),
   html: z.string().optional(),
@@ -204,6 +213,7 @@ export const ZSurveyQuestion = z.union([
   ZSurveyNPSQuestion,
   ZSurveyCTAQuestion,
   ZSurveyRatingQuestion,
+  ZSurveyBookWithCalcomQuestion
 ]);
 
 export type TSurveyQuestion = z.infer<typeof ZSurveyQuestion>;

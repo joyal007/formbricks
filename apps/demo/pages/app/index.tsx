@@ -14,6 +14,8 @@ export default function AppPage({}) {
     }
   }, [darkMode]);
 
+ 
+
   return (
     <div className="h-full bg-white px-12 py-6 dark:bg-slate-800">
       <div className="flex flex-col justify-between md:flex-row">
